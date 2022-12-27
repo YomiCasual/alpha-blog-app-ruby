@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
 	 def is_loggedin_user?(id)
 		if get_current_user 
-			get_current_user["id"] === id 
+			get_current_user["id"].to_s === id.to_s
 		end
 	end
 

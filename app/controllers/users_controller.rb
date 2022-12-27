@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
 	before_action :is_authenticated_route
-	before_action :can_perform_action?, only: [:edit, :update]
-	before_action :get_user, only: [:show, :edit, :update]
+	before_action :can_perform_action?, only: [:edit, :update, :destroy]
+	before_action :get_user, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@users = paginate_data(User, { size: 3})
@@ -42,6 +42,12 @@ class UsersController < ApplicationController
 		else
 			render :edit, status: :unprocessable_entity
 		end
+	end
+
+	def destroy
+		@user.destroy
+		session[:auth_user] = nil
+		redirect_to auth_login_path, alert: "User and all articles deleted"
 	end
 
 	private 
