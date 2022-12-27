@@ -35,13 +35,7 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def can_perform_action?
-		if !is_loggedin_user?(params['id'])
-			flash[:alert] = "Unauthorized access"
-			redirect_back(fallback_location: root_path)
-			return
-		end 
-	end
+
 	 
 
 	 helper_method :is_logged_in?, :is_authenticated_route, :get_current_user, :is_loggedin_user?

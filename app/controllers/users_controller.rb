@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
 	before_action :is_authenticated_route
-	before_action :get_user, only: [:show, :edit, :update]
 	before_action :can_perform_action?, only: [:edit, :update]
+	before_action :get_user, only: [:show, :edit, :update]
 
 	def index
 		@users = paginate_data(User, { size: 3})
@@ -51,6 +51,14 @@ class UsersController < ApplicationController
 
 	def get_user
 		@user = User.find(params[:id])
+	end
+
+	def can_perform_action?
+		if !is_loggedin_user?(params['id'])
+			flash[:alert] = "Unauthorized access"
+			redirect_back(fallback_location: root_path)
+			return
+		end 
 	end
 
 
