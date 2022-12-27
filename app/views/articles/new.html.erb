@@ -1,0 +1,34 @@
+<div>
+<% if @article.errors.any? %>
+				<div class= "bg-red-500 text-white py-3 px-4 rounded-sm mb-4 gap-2" >
+				<%  @article.errors.full_messages.each do |e| %>
+					<p><%= e  %></p>
+				 <% end %>
+				</div>
+<% end %>
+<%= form_with model: @article, local: true do |form|  %>
+
+<h3 class="text-header" ><% if @isEdit %> 
+							Edit
+						<%else %>
+						Add New
+						<% end %>
+ Article</h3>
+<div class="mt-4 space-y-6">
+		<div>
+			<%= form.label :title %>
+			<%= form.text_field :title, class: "input-field", placeholder: "Enter title"   %>
+			</div>
+			<div>
+			<%= form.label :description %>
+			<%= form.text_area :description, class: "input-field", placeholder: "Enter tweet" %>
+			</div>
+			<% if @isEdit %> 
+		 <%= form.submit  "Edit article" , class: "btn-primary" %>
+						<%else %>
+		 <%= form.submit  "Add article" , class: "btn-primary" %>
+		<% end %>
+		 <%= link_to "Go Back", articles_path, class: "btn-danger"  %>
+</div>
+<% end %> 
+</div>

@@ -1,0 +1,2 @@
+class AddTimestampsToArticle < ApplicationRecord
+end

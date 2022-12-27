@@ -1,0 +1,13 @@
+
+<h3 class="text-3xl block font-bold mb-6">Articles</h3>
+<%= link_to "New Article", new_article_path, class: 'btn-primary mb-10' %>
+
+
+<%= render 'shared/pagination', obj: @articles %>
+<div class="flex gap-5 mb-10 flex-wrap">
+
+<% @articles.each do |a| %>
+		<%= render "articles/components/article_card", article: a %>
+<% end  %>
+</div>
+<%= render 'shared/pagination', obj: @articles %>

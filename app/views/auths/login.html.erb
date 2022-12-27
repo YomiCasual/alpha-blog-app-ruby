@@ -1,0 +1,19 @@
+<div>
+<%= render "shared/error_flash", model: @user %>
+<%= form_with model: @user, url: "/auths/authenticate", method: :post , local: true do |form|  %>
+<h3 class="text-header" >Login</h3>
+<div class="mt-4 space-y-6">
+		<div>
+			<%= form.label :email %>
+			<%= form.email_field :email, class: "input-field", placeholder: "Enter email"   %>
+			</div>
+			<div>
+			<%= form.label :password %>
+			<%= form.password_field :password, class: "input-field", placeholder: "Enter password" %>
+			</div>
+	
+		 <%= form.submit  "Login" , class: "btn-primary" %>
+		 <%= link_to "Go Back", articles_path, class: "btn-danger"  %>
+</div>
+<% end %> 
+</div>

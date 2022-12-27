@@ -1,0 +1,23 @@
+<div class="bg-blue-100 px-4 py-4 rounded-md w-[400px]">
+<div class="flex items-center ">
+<div class="flex-1">
+
+	<p class="flex-1 text-lg font-bold"> <%= article.title %> <p>
+	<% if article.user %>
+	<%= link_to article.user.username, article.user, class: "flex-1 text-xs  text-blue-500 underline "  %>
+	<% end %>
+</div>
+	<div class="flex items-center gap-2">
+	<%= link_to "Show", article_path(id: article.id), class: "btn-success" %>
+
+
+	<%  if is_loggedin_user?(article.user_id) %>
+
+	<%= link_to "Edit", edit_article_path(id: article.id), class: "btn-primary" %>
+	<%= button_to "Delete", article_path(id: article.id), method: :delete, form: {data: { turbo_confirm: "Are you sure"} } ,
+			class: "btn-danger" %>
+	<% end %>
+
+	</div>
+</div>
+</div>

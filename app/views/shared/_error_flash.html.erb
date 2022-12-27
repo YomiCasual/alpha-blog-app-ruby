@@ -1,0 +1,7 @@
+<% if model.present? && model&.errors.present? &&  model&.errors&.any? %>
+				<div class= "bg-red-500 text-white py-3 px-4 rounded-sm mb-4 gap-2" >
+				<%  model&.errors.full_messages.each do |e| %>
+					<p><%= e  %></p>
+				 <% end %>
+				</div>
+<% end %>

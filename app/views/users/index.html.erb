@@ -1,0 +1,12 @@
+
+<%= render 'shared/pagination', obj: @articles %>
+<section class="grid grid-cols-3 gap-8">
+
+
+<% @users.each do |user|  %>
+
+	<%= render "users/components/user_card", user: user %>
+	
+  
+<% end %>
+</section>

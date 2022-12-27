@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "pages#index"
+  root "articles#index"
   get 'about', to: "pages#about"
+  resources :articles
+  get '/auths/login', to: 'auths#login', :as => :auth_login
+  post '/auths/authenticate', to: 'auths#authenticate', :as => :auth_authenticate
+  delete '/auths/destroy', to: 'auths#destroy', :as => :auth_destroy
+  resources :auths
+  resources :users
 end

@@ -1,8 +1,21 @@
 <div class="bg-black flex justify-between py-6 px-6 text-white">
 <div class="flex items-center gap-4">
-<%= link_to "Alpha Blog", root_path, class: "text-lg font-bold"  %>
+<%= link_to "Alpha Blog", articles_path, class: "text-lg font-bold"  %>
 <%= link_to "About", about_path  %>
+<%= link_to "Users", users_path  %>
 </div>
 <div class="flex items-center gap-3">
+
+
+<%  if is_logged_in? %>
+<p ><%= get_current_user["username"] %> </p>
+	<%= button_to "Logout", auth_destroy_path, method: :delete, form: {data: { turbo_confirm: "Are you sure"} } ,
+			class: "btn-danger" %>
+<%  else %>
+<%= link_to "Register", new_auth_path  %>
+<%= link_to "Login", auth_login_path  %>
+<% end %>
+
+
 </div>
 </div>
