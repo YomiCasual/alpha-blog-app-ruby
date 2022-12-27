@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	before_action :is_authenticated_route
-	before_action :can_perform_action_on_article?, only: [:edit, :update]
+	before_action :can_perform_action_on_article?, only: [:edit, :update, :destroy ]
 	before_action :get_all_articles, only: [:index]
 
 
