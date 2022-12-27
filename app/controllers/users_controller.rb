@@ -46,8 +46,12 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user.destroy
-		session[:auth_user] = nil
-		redirect_to auth_login_path, alert: "User and all articles deleted"
+		if @user === get_current_user
+			session[:auth_user] = nil
+			redirect_to auth_login_path, alert: "User and all articles deleted"
+			return
+		end
+		redirect_to root_path, alert: "User and all articles deleted" 
 	end
 
 	private 

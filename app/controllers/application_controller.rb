@@ -31,7 +31,18 @@ class ApplicationController < ActionController::Base
 
 	 def is_loggedin_user?(id)
 		if get_current_user 
+			if is_admin? 
+				return true
+			end
 			get_current_user["id"].to_s === id.to_s
+		end
+	end
+
+	 def is_admin?
+		if get_current_user 
+			if get_current_user[:is_admin] 
+				return true
+			end
 		end
 	end
 

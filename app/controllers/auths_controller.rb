@@ -44,6 +44,7 @@ class AuthsController < ApplicationController
 			session[:auth_user] = user
 			redirect_to root_path, notice: "User authenticated successfully"
 		else
+			flash.now[:alert] = "Invalid Credentials"
 			render :login, status: :unprocessable_entity
 		end
 	end
