@@ -49,6 +49,6 @@ class ApplicationController < ActionController::Base
 
 	 
 
-	 helper_method :is_logged_in?, :is_authenticated_route, :get_current_user, :is_loggedin_user?
+	 helper_method :is_logged_in?, :is_authenticated_route, :get_current_user, :is_loggedin_user?, :is_admin?
 	
 end
