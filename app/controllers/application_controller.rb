@@ -28,8 +28,22 @@ class ApplicationController < ActionController::Base
 			return 
 		end
 	 end
+
+	 def is_loggedin_user?(id)
+		if get_current_user 
+			get_current_user["id"] === id 
+		end
+	end
+
+	def can_perform_action?
+		if !is_loggedin_user?(params['id'])
+			flash[:alert] = "Unauthorized access"
+			redirect_back(fallback_location: root_path)
+			return
+		end 
+	end
 	 
 
-	 helper_method :is_logged_in?, :is_authenticated_route, :get_current_user
+	 helper_method :is_logged_in?, :is_authenticated_route, :get_current_user, :is_loggedin_user?
 	
 end

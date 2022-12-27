@@ -10,10 +10,6 @@ module ApplicationHelper
 		end
 	end
 
-	def is_loggedin_user?(id)
-		if get_current_user 
-			get_current_user["id"] === id
-		end
-	end
+
 
 end

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	before_action :is_authenticated_route
 	before_action :get_user, only: [:show, :edit, :update]
+	before_action :can_perform_action?, only: [:edit, :update]
 
 	def index
 		@users = paginate_data(User, { size: 3})
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
 	end
 	
 	def edit
+		# can_perform_action?
 		render :new
 	end
 
@@ -50,5 +52,7 @@ class UsersController < ApplicationController
 	def get_user
 		@user = User.find(params[:id])
 	end
+
+
 
 end
